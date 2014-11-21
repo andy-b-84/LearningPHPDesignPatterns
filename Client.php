@@ -1,30 +1,24 @@
 <?php
 namespace Lpdp;
 
-require_once('GraphicFactory.php');
-require_once('TextFactory.php');
+require_once('CountryFactory.php');
+require_once('KyrgyztanProduct.php');
 
 /**
  * Class Client
  * @package Lpdp
- * @ref LPDP page 86
+ * @ref LPDP page 94
  * @chapter 5: Factory Method Design Pattern
  */
 class Client {
     /**
-     * @var Product
+     * @var CountryFactory
      */
-    private $graphicObject;
-    /**
-     * @var Product
-     */
-    private $textObject;
+    private $countryFactory;
 
     public function __construct() {
-        $this->textObject = new TextFactory();
-        echo $this->textObject->startFactory();
-        $this->graphicObject = new GraphicFactory();
-        echo $this->graphicObject->startFactory();
+        $this->countryFactory = new CountryFactory();
+        echo $this->countryFactory->startFactory(new KyrgyztanProduct());
     }
 }
 
