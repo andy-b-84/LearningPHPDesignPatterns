@@ -1,14 +1,12 @@
-#!/usr/bin/php
 <?php
 namespace Lpdp;
 
 require_once('GraphicFactory.php');
-require_once('TextFactory.php');
 
 /**
  * Class Client
  * @package Lpdp
- * @ref LPDP page 84
+ * @ref LPDP page 86
  * @chapter 5: Factory Method Design Pattern
  */
 class Client {
@@ -23,9 +21,7 @@ class Client {
 
     public function __construct() {
         $this->graphicObject = new GraphicFactory();
-        echo $this->graphicObject->startFactory() . PHP_EOL;
-        $this->textObject = new TextFactory();
-        echo $this->textObject->startFactory() . PHP_EOL;
+        echo $this->graphicObject->startFactory() . '<br />';
     }
 }
 
