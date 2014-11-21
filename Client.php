@@ -2,6 +2,7 @@
 namespace Lpdp;
 
 require_once('GraphicFactory.php');
+require_once('TextFactory.php');
 
 /**
  * Class Client
@@ -20,8 +21,10 @@ class Client {
     private $textObject;
 
     public function __construct() {
+        $this->textObject = new TextFactory();
+        echo $this->textObject->startFactory();
         $this->graphicObject = new GraphicFactory();
-        echo $this->graphicObject->startFactory() . '<br />';
+        echo $this->graphicObject->startFactory();
     }
 }
 

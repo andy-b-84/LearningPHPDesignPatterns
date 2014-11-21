@@ -6,7 +6,7 @@ require_once('Product.php');
 /**
  * Class GraphicProduct
  * @package Lpdp
- * @ref LPDP page 85
+ * @ref LPDP page 89
  * @chapter 5: Factory Method Design Pattern
  */
 class GraphicProduct implements Product {
@@ -16,11 +16,7 @@ class GraphicProduct implements Product {
     private $image;
 
     public function getProperties() {
-        $this->image="<!doctype html><html><head><meta charset='UTF-8' />";
-        $this->image.="<title>Map Factory</title>";
-        $this->image.="</head><body>";
-        $this->image.="<img src='http://www.conservapedia.com/images/4/46/Location_of_Mali.PNG' width='500' height='500' />";
-        $this->image.="</body></html>";
+        $this->image="<img src='http://www.conservapedia.com/images/4/46/Location_of_Mali.PNG' width='362' height='371' style='padding: 10px 10px 10px 0;' align='left'/>";
         return $this->image;
     }
 } 
