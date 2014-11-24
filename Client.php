@@ -2,7 +2,7 @@
 namespace Lpdp;
 
 require_once('CountryFactory.php');
-require_once('KyrgyztanProduct.php');
+require_once('MoldovaProduct.php');
 
 /**
  * Class Client
@@ -18,7 +18,7 @@ class Client {
 
     public function __construct() {
         $this->countryFactory = new CountryFactory();
-        echo $this->countryFactory->startFactory(new KyrgyztanProduct());
+        echo $this->countryFactory->startFactory(new MoldovaProduct());
     }
 }
 
