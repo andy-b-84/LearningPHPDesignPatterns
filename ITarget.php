@@ -12,4 +12,11 @@ interface ITarget {
      * @return float
      */
     public function requester();
+
+    /**
+     * @param float $productNow
+     * @param float $serviceNow
+     * @return float
+     */
+    public function requestCalc($productNow, $serviceNow);
 } 

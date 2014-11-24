@@ -29,9 +29,6 @@ class Client {
     }
 
     /**
-     * I feel bad about this example :
-     * shouldn't we have a DollarCalc instance, then have only one "makeRequest" method, or have the ITarget interface declare the "requestCalc" method?
-     * using PHPStorm's type hinting, "request"+Ctrl^Space wrote "requester" for me, as the only method in the ITarget interface is "requester"
      * @param ITarget $req
      * @return float
      */
