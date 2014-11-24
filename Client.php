@@ -14,77 +14,80 @@ spl_autoload_register('\Lpdp\__autoload');
  * Class Client
  * @package Lpdp
  * @chapter 6 Prototype Design Pattern
- * @page 106
+ * @page 114
  */
 class Client {
-    //For direct instantiation
     /**
-     * @var IPrototype
+     * @var Marketing
      */
-    private $fly1;
+    private $market;
     /**
-     * @var IPrototype
+     * @var Management
      */
-    private $fly2;
-
-    //For cloning
+    private $manage;
     /**
-     * @var IPrototype
+     * @var Engineering
      */
-    private $c1Fly;
-    /**
-     * @var IPrototype
-     */
-    private $c2Fly;
-    /**
-     * @var IPrototype
-     */
-    private $updatedCloneFLy;
+    private $engineer;
 
     public function __construct() {
-        //Instantiate
-        $this->fly1 = new MaleProto();
-        $this->fly2 = new FemaleProto();
+        $this->makeConProto();
 
-        //Clone
-        $this->c1Fly = clone $this->fly1;
+        $Tess = clone $this->market;
+        $this->setEmployee($Tess, 'Tess Smith', 101, 'ts101-1234', 'tess.png');
+        $this->showEmployee($Tess);
 
-        $this->c2Fly = clone $this->fly2;
-        $this->updatedCloneFLy = clone $this->fly2;
+        $Jacob = clone $this->market;
+        $this->setEmployee($Jacob, 'Jacob Jones', 102, 'jj101-2234', 'jacob.png');
+        $this->showEmployee($Jacob);
 
-        //Update clones
-        $this->c1Fly->mated = true;
-        $this->c2Fly->fecundity=186;
+        $Ricky = clone $this->manage;
+        $this->setEmployee($Ricky, 'Ricky Rodriguez', 203, 'rr203-5634', 'ricky.png');
+        $this->showEmployee($Ricky);
 
-        $this->updatedCloneFLy->eyeColor='purple';
-        $this->updatedCloneFLy->wingBeat=220;
-        $this->updatedCloneFLy->unitEyes=750;
-        $this->updatedCloneFLy->fecundity=92;
+        $Olivia = clone $this->engineer;
+        $this->setEmployee($Olivia, 'Olivia Perez', 302, 'op301-1278', 'olivia.png');
+        $this->showEmployee($Olivia);
 
-        //Send through the hinting method
-        $this->showFly($this->c1Fly);
-        $this->showFly($this->c2Fly);
-        $this->showFly($this->updatedCloneFLy);
+        $John = clone $this->engineer;
+        $this->setEmployee($John, 'John Jackson', 301, 'jj302-1454', 'john.png');
+        $this->showEmployee($John);
     }
 
     /**
-     * @param IPrototype $fly
      * @return void
      */
-    private function showFly(IPrototype $fly) {
-        echo "Eye color: $fly->eyeColor<br />";
-        echo "Wing Beats/second: $fly->wingBeat<br />";
-        echo "Eye units: $fly->unitEyes<br />";
-        $genderNow = $fly->getGender();
-        echo "Gender: $genderNow<br />";
-        if ($fly->isFemale()) {
-            //AAARGH! OK, that's for the sake of the example, but geez...
-            echo "Number of eggs: $fly->fecundity";
-        } elseif ($fly->isMale()) {
-            //Still AAARGH!
-            echo "Mated: $fly->mated";
-        }
-        echo '<br /><br />';
+    private function makeConProto() {
+        $this->market = new Marketing();
+        $this->manage = new Management();
+        $this->engineer = new Engineering();
+    }
+
+    /**
+     * @param IAcmePrototype $employeeNow
+     * @return void
+     */
+    private function showEmployee(IAcmePrototype $employeeNow) {
+        $px = $employeeNow->getEmployeePic();
+        echo '<img src="'.$px.'" width="150" heigh="150" /><br />';
+        echo $employeeNow->getName() . '<br />';
+        echo $employeeNow->getUnit() . ' : ' . $employeeNow->getDept() . '<br />';
+        echo $employeeNow->getId() . '<br />';
+    }
+
+    /**
+     * @param IAcmePrototype $employeeNow
+     * @param $nm
+     * @param $dp
+     * @param $id
+     * @param $px
+     * @return void
+     */
+    private function setEmployee(IAcmePrototype $employeeNow, $nm, $dp, $id, $px) {
+        $employeeNow->setName($nm)
+            ->setDept($dp)
+            ->setId($id)
+            ->setEmployeePic("pix/$px");
     }
 }
 
