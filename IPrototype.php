@@ -45,4 +45,4 @@ abstract class IPrototype {
     public function isFemale() {
         return false;
     }
-} 
+}
