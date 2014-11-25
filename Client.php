@@ -14,13 +14,12 @@ spl_autoload_register('\\Lpdp\\__autoload');
  * Class Client
  * @package Lpdp
  * @chapter 9 Template Method
- * @page 172
+ * @page 176
  */
 class Client {
     function __construct() {
-        $caption = 'Modigliani painted elongated faces.';
-        $mo = new ConcreteClass();
-        $mo->templateMethod('modig.png', $caption);
+        $mo = new TmFac();
+        $mo->templateMethod();
     }
 }
 
