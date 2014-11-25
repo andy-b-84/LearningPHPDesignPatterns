@@ -11,22 +11,40 @@ function __autoload($className) {
 spl_autoload_register('\\Lpdp\\__autoload');
 
 /**
- * Class Client
+ * Class ClientH
  * @package Lpdp
  * @chapter 8 Decorators with Multiple Components
- * @page 158
+ * @page 163
  */
-class Client
+class ClientH
 {
     /**
      * @var IComponent
      */
     private $hotDate;
+    /**
+     * @var string
+     */
+    private $progLang;
+    /**
+     * @var string
+     */
+    private $hardware;
+    /**
+     * @var string
+     */
+    private $food;
 
     public function __construct()
     {
-        $this->hotDate = new Female();
-        $this->hotDate->setAge('Age Group 4');
+        $gender = '\\Lpdp\\'.$_POST['gender'];
+        $age = $_POST['age'];
+        $this->progLang = $_POST['progLang'];
+        $this->hardware = $_POST['hardware'];
+        $this->food = $_POST['food'];
+
+        $this->hotDate = new $gender();
+        $this->hotDate->setAge($age);
         echo $this->hotDate->getAge();
         $this->hotDate = $this->wrapComponent($this->hotDate);
         echo $this->hotDate->getFeature();
@@ -39,14 +57,14 @@ class Client
     private function wrapComponent(IComponent $component)
     {
         $component = new ProgramLang($component);
-        $component->setFeature('php');
+        $component->setFeature($this->progLang);
         $component = new Hardware($component);
-        $component->setFeature('lin');
+        $component->setFeature($this->hardware);
         $component = new Food($component);
-        $component->setFeature('veg');
+        $component->setFeature($this->food);
 
         return $component;
     }
 }
 
-$client = new Client();
+$client = new ClientH();
