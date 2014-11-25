@@ -7,3 +7,6 @@
 ## File-based project format:
 *.ipr
 *.iws
+
+# MySQL connection details
+IConnectInfo.php
