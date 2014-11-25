@@ -2,12 +2,12 @@
 namespace Lpdp;
 
 /**
- * Class OffState
+ * Class BrightestState
  * @package Lpdp
  * @chapter 10 State
- * @page 199
+ * @page 201
  */
-class OffState implements IState {
+class BrightestState implements IState {
     /**
      * @var Context
      */
@@ -21,12 +21,12 @@ class OffState implements IState {
     }
 
     public function turnLightOff() {
-        echo '<img src="lights/nada.png"/>';
+        echo '<img src="lights/off.png"/>';
+        $this->context->setState($this->context->getBrightestState());
     }
 
     public function turnLightOn() {
-        echo '<img src="lights/on.png"/>';
-        $this->context->setState($this->context->getOnState());
+        echo '<img src="lights/nada.png"/>';
     }
 
     public function turnLightBrighter() {

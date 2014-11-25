@@ -8,6 +8,8 @@ namespace Lpdp;
  * @page 196
  */
 interface IState {
-    public function turnLightOn();
     public function turnLightOff();
+    public function turnLightOn();
+    public function turnLightBrighter();
+    public function turnLightBrightest();
 } 

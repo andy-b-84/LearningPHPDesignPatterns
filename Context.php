@@ -17,6 +17,14 @@ class Context {
      */
     private $onState;
     /**
+     * @var BrighterState
+     */
+    private $brighterState;
+    /**
+     * @var BrightestState
+     */
+    private $brightestState;
+    /**
      * @var IState
      */
     private $currentState;
@@ -24,16 +32,26 @@ class Context {
     public function __construct() {
         $this->offState = new OffState($this);
         $this->onState = new OnState($this);
+        $this->brighterState = new BrighterState($this);
+        $this->brightestState = new BrightestState($this);
 
         $this->currentState = $this->offState;
+    }
+
+    public function turnOffLight() {
+        $this->currentState->turnLightOff();
     }
 
     public function turnOnLight() {
         $this->currentState->turnLightOn();
     }
 
-    public function turnOffLight() {
-        $this->currentState->turnLightOff();
+    public function turnBrighterLight() {
+        $this->currentState->turnLightBrighter();
+    }
+
+    public function turnBrightestLight() {
+        $this->currentState->turnLightBrightest();
     }
 
     /**
@@ -46,6 +64,13 @@ class Context {
     }
 
     /**
+     * @return OffState
+     */
+    public function getOffState() {
+        return $this->offState;
+    }
+
+    /**
      * @return OnState
      */
     public function getOnState() {
@@ -53,9 +78,16 @@ class Context {
     }
 
     /**
-     * @return OffState
+     * @return BrighterState
      */
-    public function getOffState() {
-        return $this->offState;
+    public function getBrighterState() {
+        return $this->brighterState;
+    }
+
+    /**
+     * @return BrightestState
+     */
+    public function getBrightestState() {
+        return $this->brightestState;
     }
 }

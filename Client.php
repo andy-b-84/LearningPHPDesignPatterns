@@ -22,9 +22,10 @@ class Client {
     public function __construct() {
         $this->context = new Context();
         $this->context->turnOnLight();
-        $this->context->turnOnLight();
+        $this->context->turnBrighterLight();
+        $this->context->turnBrightestLight();
         $this->context->turnOffLight();
-        $this->context->turnOffLight();
+        $this->context->turnBrightestLight();
     }
 }
 

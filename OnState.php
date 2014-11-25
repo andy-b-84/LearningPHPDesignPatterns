@@ -5,7 +5,7 @@ namespace Lpdp;
  * Class OnState
  * @package Lpdp
  * @chapter 10 State
- * @page 196
+ * @page 200
  */
 class OnState implements IState {
     /**
@@ -20,12 +20,20 @@ class OnState implements IState {
         $this->context = $context;
     }
 
-    public function turnLightOn() {
-        echo 'Light is already on -> take no action<br />';
+    public function turnLightOff() {
+        echo '<img src="lights/nada.png"/>';
     }
 
-    public function turnLightOff() {
-        echo 'Lights off!<br />';
-        $this->context->setState($this->context->getOffState());
+    public function turnLightOn() {
+        echo '<img src="lights/nada.png"/>';
+    }
+
+    public function turnLightBrighter() {
+        echo '<img src="lights/brighter.png"/>';
+        $this->context->setState($this->context->getBrighterState());
+    }
+
+    public function turnLightBrightest() {
+        echo '<img src="lights/nada.png"/>';
     }
 } 
