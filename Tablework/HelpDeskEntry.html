@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="help.css" rel="stylesheet" type="text/css" >
+        <title>Help Desk Data Entry and Update</title>
+        </head>
+    <body>
+        <h2>Help Desk Data Entry</h2>
+        <form action="InsertData.php" method="post" name="dataentry">
+            <label for="chain">Enter Query Chain Value (q1...qx)</label><br/>
+            <input type="text" name="chain" size="3" id="chain"/>
+            <br />
+            <label for="response">Enter Help Information</label><br/>
+            <textarea name="response" rows="8" cols="24" id="response"></textarea>
+            <br />
+            <input type="submit" value="Enter data into table" name="send" />
+        </form>
+        <h2>Update Information</h2>
+        <form action="UpdateData.php" method="post" name="dataupdate">
+            <label for="chainU">Enter Query Chain Value (q1...qx)</label><br/>
+            <input type="text" name="chain" size="3" id="chainU"/>
+            <br />
+            <label for="responseU">Enter Help Information</label><br/>
+            <textarea name="response" rows="8" cols="24" id="responseU"></textarea>
+            <br />
+            <input type="submit" value="Update table" name="update" />
+        </form>
+    </body>
+</html>
