@@ -5,31 +5,39 @@ namespace Lpdp;
  * Class Client
  * @package Lpdp
  * @chapter 12 the Flexibility of the Strategy Design Pattern
- * @page 245
+ * @page 261
  */
 class Client {
     public function insertData() {
+        $secure = new SecureData();
         $context = new Context(new DataEntry());
-        $context->algorithm();
+        $secure->enterData();
+        $context->algorithm($secure->setEntry());
     }
 
     public function findData() {
+        $secure = new SecureData();
         $context = new Context(new SearchData());
-        $context->algorithm();
+        $secure->conductSearch();
+        $context->algorithm($secure->setEntry());
     }
 
     public function showAll() {
-        $context = new Context(new DisplayData());
-        $context->algorithm();
+        $context = new Context(new DisplayAll());
+        $context->algorithm(array(0));
     }
 
     public function changeData() {
+        $secure = new SecureData();
         $context = new Context(new UpdateData());
-        $context->algorithm();
+        $secure->makeChange();
+        $context->algorithm($secure->setEntry());
     }
 
     public function killer() {
+        $secure = new SecureData();
         $context = new Context(new DeleteRecord());
-        $context->algorithm();
+        $secure->removeRecord();
+        $context->algorithm($secure->setEntry());
     }
 }

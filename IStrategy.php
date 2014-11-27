@@ -5,8 +5,12 @@ namespace Lpdp;
  * Interface IStrategy
  * @package Lpdp
  * @chapter 12 the Flexibility of the Strategy Design Pattern
- * @page 248
+ * @page 254
  */
 interface IStrategy {
-    public function algorithm();
+    /**
+     * @var string
+     */
+    const TABLENOW = 'survey';
+    public function algorithm(array $dataPack);
 }

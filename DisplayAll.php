@@ -2,28 +2,20 @@
 namespace Lpdp;
 
 /**
- * Class SearchData
+ * Class DisplayAll
  * @package Lpdp
  * @chapter 12 the Flexibility of the Strategy Design Pattern
- * @page 266
+ * @page 265
  */
-class SearchData implements IStrategy {
+class DisplayAll implements IStrategy {
     /**
      * @var string
      */
     private $tableMaster;
     /**
-     * @var array
-     */
-    private $dataPack;
-    /**
      * @var \mysqli
      */
     private $hookup;
-    /**
-     * @var string
-     */
-    private $sql;
 
     /**
      * @param array $dataPack
@@ -31,13 +23,19 @@ class SearchData implements IStrategy {
     public function algorithm(array $dataPack) {
         $this->tableMaster = IStrategy::TABLENOW;
         $this->hookup = UniversalConnect::doConnect();
-        $this->dataPack = $dataPack;
-        $field = $this->dataPack[0];
-        $term = $this->dataPack[1];
-        $this->sql = "SELECT * FROM $this->tableMaster WHERE $field='$term';";
-        if ($result = $this->hookup->query($this->sql)) {
+
+        $sql = "SELECT * FROM $this->tableMaster;";
+        if ($result = $this->hookup->query($sql)) {
+            printf('Select returned %d rows.<br />', $result->num_rows);
+
             echo '<link rel="stylesheet" href="survey.css" />';
-            echo '<table>';
+            echo '<table><tr>';
+
+            while ($finfo = $result->fetch_field()) {
+                echo '<th>&nbsp;'.$finfo->name.'</th>';
+            }
+            echo '</tr>';
+
             while ($row = $result->fetch_row()) {
                 echo '<tr>';
                 foreach ($row as $cell) {
@@ -48,6 +46,7 @@ class SearchData implements IStrategy {
             echo '</table>';
             $result->close();
         }
+
         $this->hookup->close();
     }
-}
+} 
