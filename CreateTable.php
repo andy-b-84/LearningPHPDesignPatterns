@@ -23,13 +23,7 @@ class CreateTable {
         $this->tableMaster = 'survey';
         $this->hookup = UniversalConnect::doConnect();
 
-        $drop = "DROP TABLE IF EXISTS $this->tableMaster;";
-
-        if (true === $this->hookup->query($drop)) {
-            printf('Old table %s has been dropped.<br />', $this->tableMaster);
-        }
-
-        $sql = "CREATE TABLE $this->tableMaster (
+        $sql = "CREATE TABLE IF NOT EXISTS $this->tableMaster (
                   id SERIAL,
                   company NVARCHAR(40),
                   devdes  NVARCHAR(10),
