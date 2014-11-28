@@ -1,0 +1,40 @@
+@charset "UTF-8";
+img {
+    padding: 10px 5px 0px 0px;
+}
+
+.pixRight {
+    float: right;
+    margin: 0 0 5px 5px;
+}
+
+.pixLeft {
+    float: left;
+    margin: 0 5px 5px 0;
+}
+
+header {
+    color: #900;
+    font-size: 24px;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    background-color: #BFACA4;
+    color: #3B3E40;
+}
+
+a {
+    text-decoration: none;
+    color: #C9DBF2;
+    font-weight: bold;
+}
+
+h1 {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 18px;
+    background-color: #C9DBF2;
+    color: #3B3E40;
+}

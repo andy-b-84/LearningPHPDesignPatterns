@@ -2,19 +2,10 @@
 namespace Lpdp;
 
 /**
- * @param string $className
- */
-function __autoload($className) {
-    $classNameWithoutNamespace = substr($className, 5);
-    require_once("$classNameWithoutNamespace.php");
-}
-spl_autoload_register('\\Lpdp\\__autoload');
-
-/**
  * Class Client
  * @package Lpdp
  * @chapter 13 The Chain of Responsibility in a MySQL Help Desk
- * @page 281
+ * @page 286
  */
 class Client
 {
@@ -25,24 +16,39 @@ class Client
 
     public function __construct()
     {
-        if (isset($_POST['sendNow'])) {
-            $this->queryNow = $_POST['help'];
-        }
-        $q1 = new Q1();
-        $q2 = new Q2();
-        $q3 = new Q3();
-        $q4 = new Q4();
-        $q5 = new Q5();
+        $this->queryNow = getdate();
+        $d1 = new D1();
+        $d2 = new D2();
+        $d3 = new D3();
+        $d4 = new D4();
+        $d5 = new D5();
+        $d6 = new D6();
+        $d7 = new D7();
+        $d8 = new D8();
+        $d9 = new D9();
+        $d10 = new D10();
+        $d11 = new D11();
+        $d12 = new D12();
+        $d13 = new D13();
+        $d14 = new D14();
+        $d15 = new D15();
 
-        $q1->setSuccessor($q2);
-        $q2->setSuccessor($q3);
-        $q3->setSuccessor($q4);
-        $q4->setSuccessor($q5);
+        $d1->setSuccessor($d2);
+        $d2->setSuccessor($d3);
+        $d3->setSuccessor($d4);
+        $d4->setSuccessor($d5);
+        $d5->setSuccessor($d6);
+        $d6->setSuccessor($d7);
+        $d7->setSuccessor($d8);
+        $d8->setSuccessor($d9);
+        $d9->setSuccessor($d10);
+        $d10->setSuccessor($d11);
+        $d11->setSuccessor($d12);
+        $d12->setSuccessor($d13);
+        $d13->setSuccessor($d14);
+        $d14->setSuccessor($d15);
 
         $loadup = new Request($this->queryNow);
-
-        $q1->handleRequest($loadup);
+        $d1->handleRequest($loadup);
     }
 }
-
-$client = new Client();

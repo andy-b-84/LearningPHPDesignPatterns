@@ -9,28 +9,28 @@ namespace Lpdp;
  */
 abstract class Handler {
     /**
+     * @var HungerFactory
+     */
+    protected $hungerFactory;
+    /**
      * @var Handler
      */
     protected $successor;
     /**
-     * @var \mysqli
+     * @var int
      */
-    protected $hookup;
+    protected $monthNow;
+    /**
+     * @var int
+     */
+    protected $dayNow;
     /**
      * @var string
      */
-    protected $tableMaster = 'helpdesk';
-    /**
-     * @var string
-     */
-    protected $sql;
-    /**
-     * @var string
-     */
-    protected $handle;
+    protected $handleNow;
 
     public function __construct() {
-        $this->hookup = UniversalConnect::doConnect();
+        $this->hungerFactory = new HungerFactory();
     }
 
     /**
@@ -38,10 +38,6 @@ abstract class Handler {
      */
     public function setSuccessor(Handler $nextService) {
         $this->successor = $nextService;
-    }
-
-    public function __destruct() {
-        $this->hookup->close();
     }
 
     /**
